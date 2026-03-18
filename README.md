@@ -333,6 +333,18 @@ In the **Operations** tab, each alert has action buttons:
 
 ---
 
+## Screenshots
+
+| ![Dashboard Overview](screenshots/1.png) | ![Alert Management](screenshots/2.png) |
+|:---:|:---:|
+| Dashboard Overview | Alert Management & Lifecycle |
+
+| ![Threat Intel](screenshots/3.png) | ![Log Injection](screenshots/1_2.png) |
+|:---:|:---:|
+| Threat Intelligence & GeoIP Map | Log Injection & Anomaly Detection |
+
+---
+
 ## Future Roadmap
 
 - [ ] SCADA log parser — Modbus TCP and DNP3 event log support
