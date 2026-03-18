@@ -341,7 +341,7 @@ In the **Operations** tab, each alert has action buttons:
 
 | ![Threat Intel](screenshots/3.png) | ![Log Injection](screenshots/1_2.png) |
 |:---:|:---:|
-| Threat Intelligence & GeoIP Map | Log Injection & Anomaly Detection |
+| Log Injection & Anomaly Detection | Threat Intelligence & GeoIP Map |
 
 ---
 
