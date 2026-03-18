@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OT/ICS Security Operations Center</title>
+    
+    <!-- Sleek Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Clean Industrial Theme -->
+    <link rel="stylesheet" href="style_clean.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Leaflet CSS (for Map) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BAR -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i> <span>OT/ICS SOC</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> <span>Operations</span></a></li>
+                <li><a href="#" class="nav-link" data-tab="logs"><i class="fas fa-stream"></i> <span>Live Feed</span></a></li>
+                <li><a href="#" class="nav-link" data-tab="ingest"><i class="fas fa-upload"></i> <span>Log Injector</span></a></li>
+            </ul>
+            <div class="nav-info">
+                <span id="current-time">Loading...</span>
+                <span class="version-tag">v2.1</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Tab 1: Dashboard -->
+            <div id="dashboard" class="tab-content active">
+                <div class="dashboard-header">
+                    <h1>Security Operations Center</h1>
+                    <div class="system-status"><span class="pulse"></span> System Online</div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="card logs">
+                        <h3>Total Logs</h3>
+                        <div class="value" id="stat-total-logs">0</div>
+                    </div>
+                    <div class="card alerts">
+                        <h3>Total Alerts</h3>
+                        <div class="value" id="stat-total-alerts">0</div>
+                    </div>
+                    <div class="card attackers">
+                        <h3>Top Attacker IP</h3>
+                        <div class="value" id="stat-top-attacker">N/A</div>
+                    </div>
+                    <div class="card status">
+                        <h3>Risk Level</h3>
+                        <div class="value" id="risk-level">LOW</div>
+                    </div>
+                </div>
+
+                <div class="content-grid-compact">
+                    <div class="panel-compact">
+                        <div class="panel-header">
+                            <h2><i class="fas fa-bolt"></i> Recent Activity</h2>
+                        </div>
+                        <div id="log-stream-mini" class="stream-compact"></div>
+                    </div>
+                    <div class="panel-compact">
+                        <div class="panel-header">
+                            <h2><i class="fas fa-exclamation-triangle"></i> Critical Alerts</h2>
+                        </div>
+                        <div id="alert-list-mini" class="stream-compact"></div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <canvas id="severityChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="alertTrendChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- MAP SECTION -->
+                <div class="panel-map">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-globe"></i> Global Threat Map</h2>
+                    </div>
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Live Logs -->
+            <div id="logs" class="tab-content">
+                <header class="tab-header">
+                    <h1>Live Log Stream</h1>
+                    <button class="btn-clear" onclick="clearLogs()">Clear Display</button>
+                </header>
+                <div class="search-container-large">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="logSearch" placeholder="Search by IP, Message, Attack Type, or Severity...">
+                </div>
+                <div class="panel-full">
+                    <div id="log-stream" class="log-stream-full"></div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Inject Logs -->
+            <div id="ingest" class="tab-content">
+                <header class="tab-header">
+                    <h1>Manual Log Injection</h1>
+                </header>
+                <div class="panel-full">
+                    <p class="description">Paste raw logs below (one per line) to simulate real-world attack scenarios.</p>
+                    <textarea id="manualLogs" placeholder="Paste your raw log data here..."></textarea>
+                    <button onclick="submitManualLogs()" class="btn-submit-large">
+                        <i class="fas fa-paper-plane"></i> Ingest Logs
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Leaflet JS (for Map) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script src="dashboard.js"></script>
+</body>
+</html>
