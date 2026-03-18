@@ -347,7 +347,7 @@ In the **Operations** tab, each alert has action buttons:
 
 ## Author
 
-**T Lohith** — M.Tech Networks & Cybersecurity, Amity University Gurugram
+**T Lohith** — M.Tech Networks & Cybersecurity
 
 Specializing in OT/ICS security and Blue Team operations. This project is part of a cybersecurity portfolio targeting SOC Analyst and Security Engineer roles.
 
